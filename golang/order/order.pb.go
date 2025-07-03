@@ -84,6 +84,9 @@ func (x *CreateOrderRequest) GetTotalPrice() float32 {
 type Item struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	ProductCode   string                 `protobuf:"bytes,2,opt,name=product_code,json=productCode,proto3" json:"product_code,omitempty"`
+	UnitPrice     float32                `protobuf:"fixed32,3,opt,name=unit_price,json=unitPrice,proto3" json:"unit_price,omitempty"`
+	Quantity      int32                  `protobuf:"varint,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -123,6 +126,27 @@ func (x *Item) GetName() string {
 		return x.Name
 	}
 	return ""
+}
+
+func (x *Item) GetProductCode() string {
+	if x != nil {
+		return x.ProductCode
+	}
+	return ""
+}
+
+func (x *Item) GetUnitPrice() float32 {
+	if x != nil {
+		return x.UnitPrice
+	}
+	return 0
+}
+
+func (x *Item) GetQuantity() int32 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
 }
 
 type CreateOrderResponse struct {
@@ -178,9 +202,13 @@ const file_order_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
 	"\x05items\x18\x02 \x03(\v2\x05.ItemR\x05items\x12\x1f\n" +
 	"\vtotal_price\x18\x03 \x01(\x02R\n" +
-	"totalPrice\"\x1a\n" +
+	"totalPrice\"x\n" +
 	"\x04Item\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"0\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12!\n" +
+	"\fproduct_code\x18\x02 \x01(\tR\vproductCode\x12\x1d\n" +
+	"\n" +
+	"unit_price\x18\x03 \x01(\x02R\tunitPrice\x12\x1a\n" +
+	"\bquantity\x18\x04 \x01(\x05R\bquantity\"0\n" +
 	"\x13CreateOrderResponse\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\x03R\aorderId2>\n" +
 	"\x05Order\x125\n" +
